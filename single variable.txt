@@ -1,0 +1,45 @@
+#linear regration -one variable
+import matplotlib.pyplot as plt
+
+x=[0,1,2,3]
+y=[4,7,7,8]
+#parameter initialization
+theta=[2,2]
+n=0
+j=100
+#hypothesis funcion
+#while j>0.5:
+for i in range(10):
+    
+  print("Iteration number",n+1)
+  lisH=[]
+  i=0
+  for i in range (len(x)):
+    xx= theta[0]+theta[1]*x[i]
+    lisH.append(xx)
+
+  print("hypothesis value",lisH)
+
+  #cont function
+  m=len(x)
+  xxx=0
+  for i in range(m):
+    xxx+=(lisH[i]-y[i])**2
+
+  j=(1/(2*m))*xxx
+  print("Value of cost funtion:",j)
+
+  #gradient descent
+  a=0.01
+  xx=0
+  for i in range(m):
+    xx+=(lisH[i]-y[i])
+  theta[0]=theta[0]-(a/m)*xx
+  xx=0
+  for i in range(m):
+    xx+=(lisH[i]-y[i])*x[i]
+  theta[1]=theta[1]-(a/m )* xx
+  print("New parameter: ",theta)
+  n=n+1
+  plt.plot(x,lisH,marker="o")
+  plt.show()
